@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 WSOP 메인 이벤트 심층 분석 (상세 Ver.)</title>
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        /* Basic Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            line-height: 1.8;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2c2c2c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c23b22;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e04b2f;
+        }
+
+        /* Fixed Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            background-color: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            height: 70px;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 2.0em; 
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #f0f0f0;
+            font-weight: 500;
+            font-size: 1.4em;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ffffff;
+            background-color: #c23b22;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 120px 50px 80px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #3a3a3a;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        #intro {
+             justify-content: center;
+             align-items: center;
+             text-align: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1, h2, h3, h4 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: #c23b22;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: #ffffff;
+            font-weight: 500;
+            border-bottom: 2px solid #c23b22;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 2em;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            color: #e0e0e0;
+            font-weight: 500;
+            border-left: 4px solid #c23b22;
+            padding-left: 15px;
+            text-align: left;
+        }
+        
+        h4 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #d1d1d1;
+            text-align: left;
+        }
+        
+        p {
+            font-size: 1.1em;
+            color: #cccccc;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        li {
+            background-color: rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            border-left: 3px solid #c23b22;
+        }
+
+        strong {
+            color: #e04b2f;
+            font-weight: 500;
+        }
+        
+        .center-text {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-collapse: collapse;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #444;
+        }
+
+        th {
+            background-color: #c23b22;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #353535;
+        }
+        
+        /* Intro Section specific styles */
+        #intro h1 { font-size: 4.5em; }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.5em;
+            color: #ccc;
+        }
+        
+        .scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9em; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-20px); } 60% { transform: translateX(-50%) translateY(-10px); } }
+
+        /* --- START: 2-COLUMN LAYOUT CSS --- */
+        .two-column-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px; /* 컬럼 사이의 간격 */
+            width: 100%;
+        }
+        .column {
+            flex: 1; /* 컬럼이 공간을 균등하게 차지하도록 함 */
+        }
+        .column h3 {
+            text-align: center; /* 컬럼 안의 h3는 다시 가운데 정렬 */
+            border-left: none; /* 기존 왼쪽 보더 제거 */
+            border-bottom: 2px solid #c23b22; /* h2와 유사한 밑줄 스타일 적용 */
+            display: inline-block;
+            padding-bottom: 10px;
+            padding-left: 0;
+            margin-top: 0;
+        }
+        /* --- END: 2-COLUMN LAYOUT CSS --- */
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">2025 WSOP M/E 분석</div>
+        <nav>
+            <ul>
+                <li><a href="#intro">소개</a></li>
+                <li><a href="#overview">대회개요</a></li>
+                <li><a href="#results">결과분석</a></li>
+                <li><a href="#records">주요기록</a></li>
+                <li><a href="#journey">Day 5 여정</a></li>
+                <li><a href="#change">Day 5 변화</a></li>
+                <li><a href="#tech-analysis">기술분석</a></li>
+                <li><a href="#prod-analysis">제작/전략</a></li>
+                <li><a href="#conclusion">최종결론</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro">
+            <div class="container">
+                <h1>2025 WSOP 메인 이벤트</h1>
+                <p class="subtitle">Day 5, 모든 것이 바뀐 순간: 카메라 셋업의 극적인 변화 심층 분석</p>
+            </div>
+            <div class="scroll-down">▼ Scroll Down ▼</div>
+        </section>
+
+        <section id="overview">
+            <div class="container">
+                <h2 class="center-text">대회 개요</h2>
+                <h3>📅 일정 요약</h3>
+                <p>2025년 WSOP 메인 이벤트는 7월 2일(수)에 1A 플라이트로 시작해 7월 16일(수)에 최종 결승 테이블까지 이어지는 약 2주간의 장정이었습니다.</p>
+                <table>
+                    <thead><tr><th>단계</th><th>날짜</th><th>세부 현황</th></tr></thead>
+                    <tbody>
+                        <tr><td>Day 1A–D</td><td>7월 2일~5일 (오후 12시)</td><td>4개 시작 플라이트 진행</td></tr>
+                        <tr><td>Day 2A–D</td><td>7월 6~7일 (오후 12시)</td><td>각 플라이트 생존자 이어감</td></tr>
+                        <tr><td>Day 3–8</td><td>7월 8~13일 (오후 12시)</td><td>필드가 Day 3에서 최종 테이블까지 줄어듦</td></tr>
+                        <tr><td>휴식일 Day 9</td><td>7월 14일</td><td>플레이 중간 휴식</td></tr>
+                        <tr><td>결승 테이블</td><td>7월 15–16일</td><td>최종 9인 결승 테이블 이틀간 진행</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>🎟 참가 규모 및 상금 구조</h3>
+                <ul>
+                    <li><strong>참가자:</strong> 총 9,735명으로, 역대 세 번째로 큰 규모의 필드였습니다.</li>
+                    <li><strong>총상금풀:</strong> 약 $90,535,500에 달했습니다.</li>
+                    <li><strong>상금 수령:</strong> 상위 1,461명(약 15%)이 상금을 수령했으며, 최저 상금은 약 $15,000 수준이었습니다.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="results">
+             <div class="container">
+                <h2 class="center-text">결과 분석</h2>
+                
+                <div class="two-column-layout">
+                    <div class="column">
+                        <h3>🏆 최종 테이블 & 톱9 결과</h3>
+                        <table>
+                            <thead><tr><th>순위</th><th>선수</th><th>국가</th><th>상금</th></tr></thead>
+                            <tbody>
+                                <tr><td>1</td><td>Michael "The Grinder" Mizrachi</td><td>미국</td><td>$10,000,000</td></tr>
+                                <tr><td>2</td><td>John Wasnock</td><td>미국</td><td>$6,000,000</td></tr>
+                                <tr><td>3</td><td>Braxton Dunaway</td><td>미국</td><td>$4,000,000</td></tr>
+                                <tr><td>4</td><td>Kenny Hallaert</td><td>벨기에</td><td>$3,000,000</td></tr>
+                                <tr><td>5</td><td>Luka Bojovic</td><td>세르비아</td><td>$2,400,000</td></tr>
+                                <tr><td>6</td><td>Adam Hendrix</td><td>미국</td><td>$1,900,000</td></tr>
+                                <tr><td>7</td><td>Leo Margets</td><td>스페인</td><td>$1,500,000</td></tr>
+                                <tr><td>8</td><td>Jarod Minghini</td><td>미국</td><td>$1,250,000</td></tr>
+                                <tr><td>9</td><td>이대형 (Daehyung Lee)</td><td>대한민국</td><td>$1,000,000</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <h3>🇺🇸 챔피언 분석: Michael Mizrachi</h3>
+                        <ul>
+                            <li>44세의 미국 프로로, 이 메인 이벤트 우승으로 약 €8.6m(약 $9–10m) 규모의 상금을 획득했습니다.</li>
+                            <li>대회 전 ‘포커 플레이어스 챔피언십(50K PPC)’ 우승도 함께 차지하며 완벽한 퍼포먼스를 기록했습니다.</li>
+                            <li>결승 테이블 초반부터 압도적인 칩 리드를 보이며, 단숨에 경쟁자들을 압도했고, 헤드업부터 최종 단계까지 흐름을 단 한 번도 내주지 않았습니다.</li>
+                            <li>세 번째 메인 이벤트 진출에서 우승을 품에 안으며, 역대 명성에 걸맞은 업적을 세웠습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="records">
+            <div class="container">
+                <h2 class="center-text">주요 기록 및 인사이트</h2>
+                <h3>📌 흥미 요소 & 통계</h3>
+                <ul>
+                    <li>전설적인 선수 필 헬무스(Phil Hellmuth)는 “체력적으로 너무 힘들다”며 대회 불참을 선언했습니다. 이번 메인 이벤트는 연속 7일 플레이로 체력 경쟁이 중요했다는 점에서 화제가 됐습니다.</li>
+                    <li>한국의 이대형 선수는 최종 9인 테이블에 진출하여 $1,000,000를 획득, 한국 팬들에게 큰 기쁨을 선사했습니다.</li>
+                </ul>
+                
+                <h3>🧠 전략적 인사이트</h3>
+                <ul>
+                    <li><strong>초기 플라이트 운영:</strong> 4개의 Day 1을 통해 참가자들의 컨디션과 전략, 운이 분산되었고, Day 2부터 실력이 본격적으로 드러나는 구조였습니다.</li>
+                    <li><strong>브레이크 전략:</strong> 긴 연속 일정 속에서 중간 휴식일(Day 9)은 선수 컨디션 조율에 중요한 역할을 수행했습니다.</li>
+                    <li><strong>챔피언의 플레이 스타일:</strong> Mizrachi는 첫날부터 강력한 공격과 칩 확보 전략을 구사했으며, 결승 테이블에서의 압도적인 성적이 그것을 증명했습니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="journey">
+            <div class="container">
+                <h2 class="center-text">Day 5까지의 여정</h2>
+                <h3>Day별 생존 현황</h3>
+                <h4>Day 1 (7/2~5): 시작 플라이트 (1A-1D)</h4>
+                <ul><li>총 참가 수: 9,735명</li><li>주요 칩 리더 (Day 1D 기준): Talal Shakerchi (136,100), Sam Acheampong (113,600)</li></ul>
+                <h4>Day 2 (7/6~7): 플라이트별 생존자 통합</h4>
+                <ul><li>Day 2ABC와 Day 2D 생존자가 합류하며 통합 필드는 약 3,453명으로 추정됩니다.</li></ul>
+                <h4>Day 3 (7/8)</h4>
+                <ul><li>남은 인원 3,453명. 주요 칩 리더: Shotaro Kobayashi (1,971,000)</li></ul>
+                <h4>Day 4 (7/9): 머니 버블 직전</h4>
+                <ul><li>남은 인원은 1,476명으로, 상금 획득을 눈앞에 둔 치열한 경쟁이 펼쳐졌습니다.</li></ul>
+                <h4>Day 5 (7/10): 컷라인 통과 후</h4>
+                <ul><li>최종 522명이 생존했으며, 이때부터 대회의 양상이 크게 변합니다.</li></ul>
+            </div>
+        </section>
+        
+        <section id="change">
+            <div class="container">
+                <h2 class="center-text">Day 5의 변화</h2>
+                <h3>🎥 무엇이 어떻게 바뀌었는가?</h3>
+                <p>Day 5는 단순한 생존자 수 축소를 넘어, 방송 제작 환경 전체가 바뀌는 중요한 분기점이었습니다.</p>
+                
+                <table>
+                    <thead><tr><th>구분</th><th>Day 1–4 카메라 셋업</th><th>Day 5 이후 카메라 셋업</th><th>변경 목적</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>환경</strong></td><td>분산된 환경, 여러 무인카메라</td><td>통합된 환경, 프리미엄 카메라 시스템</td><td>방송 집중도, 현장감 강화</td></tr>
+                        <tr><td><strong>카메라</strong></td><td>Panasonic PTZ 중심, 무인 운영</td><td>소니 FR7, 로보틱스 크레인 등</td><td>촬영 품질 및 표현력 향상</td></tr>
+                        <tr><td><strong>중계 전략</strong></td><td>효율적, 참가자 중심</td><td>시청자 중심, 스토리텔링 강화</td><td>시청자 몰입감 극대화</td></tr>
+                        <tr><td><strong>촬영 포커스</strong></td><td>객관적 기록형</td><td>선수의 표정, 리액션, 심리 묘사</td><td>스토리텔링 및 몰입도 향상</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="tech-analysis">
+            <div class="container">
+                <h2 class="center-text">기술적 분석</h2>
+                <p class="center-text">Day 5부터의 변화는 하드웨어의 완전한 업그레이드를 의미했습니다.</p>
+                <h3>🎯 1. 기술적 이유 (Technical Perspective)</h3>
+                <p>파나소닉 PTZ 중심의 무인 원격 제어 카메라에서, 모두 소니(Sony) 유인(有人) 카메라 시스템으로 변경되었습니다. 이는 고품질 영상과 역동적인 연출을 가능하게 했습니다.</p>
+                <table>
+                    <thead><tr><th>요소</th><th>기존 (Day 1–4)</th><th>Day 5 이후 변경</th><th>기술적 효과</th></tr></thead>
+                    <tbody>
+                        <tr><td>메인테이블 카메라</td><td>파나소닉 PTZ(무인)</td><td>소니 HD-CP1(유인)</td><td>고해상도, 고품질</td></tr>
+                        <tr><td>천장 풀샷</td><td>파나소닉 PTZ</td><td>소니 HD-CP1</td><td>영상 통일성 향상</td></tr>
+                        <tr><td>지미집</td><td>고정형</td><td>로보틱 지미집</td><td>역동성, 샷 다양성</td></tr>
+                        <tr><td>ENG/스테디캠</td><td>없음</td><td>추가 도입</td><td>현장감 강화</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="prod-analysis">
+            <div class="container">
+                <h2 class="center-text">제작 및 전략 분석</h2>
+                <h3>📺 2. 방송 제작적 이유 (Production Perspective)</h3>
+                <p>참가자가 축소되면서 제작 전략의 중심이 '기록'에서 '스토리텔링'으로 이동했습니다. 플레이어의 세밀한 표정, 긴장감 등 심층적 스토리텔링에 중점을 두어 시청자의 감정 몰입을 이끌어냈습니다.</p>
+                <table>
+                    <thead><tr><th>요소</th><th>기존 (Day 1–4)</th><th>Day 5 이후 변경</th><th>제작적 효과</th></tr></thead>
+                    <tbody>
+                        <tr><td>중계 집중도</td><td>낮음 (다수 테이블)</td><td>높음 (한정된 테이블)</td><td>몰입감 강화</td></tr>
+                        <tr><td>촬영 스타일</td><td>정적, 단조로움</td><td>동적, 예술적</td><td>스토리텔링 강화</td></tr>
+                        <tr><td>감정 전달</td><td>제한적</td><td>밀착 촬영으로 강화</td><td>감정 몰입 증가</td></tr>
+                    </tbody>
+                </table>
+                <h3>🎖️ 3. 전략적 이유 (Strategic Perspective)</h3>
+                <p>이 모든 변화의 타이밍이 Day 5인 것은 철저한 전략적 판단의 결과입니다. '머니버블(Money Bubble)' 돌파 이후 시청률이 급증하는 시점에 맞춰 방송 품질을 최고로 끌어올리는 전략입니다.</p>
+                <table>
+                    <thead><tr><th>구분</th><th>Day 1–4 중계 전략</th><th>Day 5 이후 중계 전략</th><th>전략적 목표</th></tr></thead>
+                    <tbody>
+                        <tr><td>주요 목표</td><td>효율적 중계, 다수 테이블 관리</td><td>프리미엄 중계, 선수 밀착 촬영</td><td>시청률 및 브랜드 가치 상승</td></tr>
+                        <tr><td>타이밍</td><td>대회 초기 (참가자 多)</td><td>머니버블 이후 (참가자 ↓, 관심 ↑)</td><td>전략적 시청률 극대화</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="conclusion">
+            <div class="container">
+                <h2 class="center-text">최종 결론</h2>
+                <h3>📅 『Day 5』가 가진 특별한 의미</h3>
+                <ul>
+                    <li><strong>참가자 축소:</strong> 전체 참가자의 약 95% 이상 탈락하여 집중적인 촬영이 가능해졌습니다.</li>
+                    <li><strong>머니버블 돌파로 인한 흥미 상승:</strong> 관중의 관심과 시청률이 급증하는 시점이었습니다.</li>
+                    <li><strong>결승까지의 지속 가능성:</strong> 대회 후반부에 일관된 프리미엄 콘텐츠를 제공할 수 있는 시작점이었습니다.</li>
+                </ul>
+                <h3>🚩 결론: 왜 Day 5였는가?</h3>
+                <p class="center-text">카메라 셋업이 Day 5를 기점으로 완벽하게 교체된 가장 큰 이유는 다음과 같습니다.</p>
+                <ul>
+                    <li><strong>기술적 측면:</strong> 소니 카메라 도입으로 영상 품질과 표현력 강화</li>
+                    <li><strong>방송 제작 측면:</strong> 유인 카메라 시스템 도입으로 스토리텔링과 현장감, 역동성 강화</li>
+                    <li><strong>전략적 측면:</strong> 머니버블을 지나 관심도가 급증하는 Day 5부터 시청률과 브랜딩 효과 극대화</li>
+                </ul>
+                <p class="center-text" style="margin-top: 40px; font-size:1.2em; font-weight: 500;">결론적으로 Day 5는 단순한 날짜가 아닌, WSOP라는 브랜드를 가장 효과적으로 알리고 시청자에게 최고의 경험을 선사하기 위한 기술적, 제작적, 전략적 판단이 집약된 필연적인 <strong>'전략적 변곡점'</strong>이었습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Javascript for active navigation link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', ()=> {
+            let current = '';
+            sections.forEach( section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3) ){
+                    current = section.getAttribute('id');
+                }
+            })
+
+            navLi.forEach( a => {
+                a.classList.remove('active');
+                if(a.getAttribute('href').substring(1) === current){
+                    a.classList.add('active');
+                }
+            })
+        });
+    </script>
+</body>
+</html>
