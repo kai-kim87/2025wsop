@@ -419,7 +419,7 @@
                 <h3>🎯 1. 기술적 이유 (Technical Perspective)</h3>
                 <p>Panasonic PTZ 중심의 무인 원격 제어 카메라에서, 모두 Sony <strong>유인카메라 시스템</strong>으로 변경.</p>
                 <table>
-                    <thead><tr><th>요소</th><th>기존 (Day 1–4)</th><th>Day 5 이후 변경</th><th>기술적 효과</th></tr></tr></thead>
+                    <thead><tr><th>요소</th><th>기존 (Day 1–4)</th><th>Day 5 이후 변경</th><th>기술적 효과</th></tr></thead>
                     <tbody>
                         <tr>
                             <td>Main table 카메라</td>
@@ -430,11 +430,16 @@
                         <tr>
                             <td>천장 Full Shot</td>
                             <td>Panasonic PTZ</td>
-                            <td>소니 HD-CP1</td>
+                            <td><a href="#" id="image-gallery-trigger">소니 HD-CP1</a></td>
                             <td>영상 통일성 향상</td>
                         </tr>
                         <tr><td>Jimmy Jib</td><td>약 8M 고정형</td><td>Telescopic Camera Crane <br><a href="https://moviebird.com/cranes-2/mb52/" target="_blank">MovieBird 52</a><br>(고정형 지미집에 길이가 유동적)</td><td>역동성, 샷 다양성</td></tr>
-                        <tr><td>ENG / Steady CAM</td><td>ENG(Free CAM)</td><td>ENG(Free CAM), Steady CAM</td><td>현장감 강화</td></tr>
+                        <tr>
+                            <td>ENG / Steady CAM</td>
+                            <td>ENG(Free CAM)</td>
+                            <td>ENG(Free CAM), <a href="#" id="video-trigger">Steady CAM</a></td>
+                            <td>현장감 강화</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -508,6 +513,95 @@
                 }
             })
         });
+
+        // --- START: JAVASCRIPT FOR NEW WINDOW IMAGE GALLERY ---
+        const imageTrigger = document.getElementById('image-gallery-trigger');
+
+        imageTrigger.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const imagePageContent = `
+                <!DOCTYPE html>
+                <html lang="ko">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>이미지 비교</title>
+                    <style>
+                        body {
+                            margin: 0;
+                            background-color: #f0f2f5;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                        }
+                        .image-container {
+                            display: flex;
+                            gap: 20px;
+                            padding: 20px;
+                            max-width: 90%;
+                        }
+                        .image-container img {
+                            max-width: 45vw;
+                            height: auto;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="image-container">
+                        <img src="1.png" alt="이미지 1">
+                        <img src="2.png" alt="이미지 2">
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(imagePageContent);
+            newWindow.document.close();
+        });
+        // --- END: JAVASCRIPT FOR NEW WINDOW IMAGE GALLERY ---
+
+        // --- START: JAVASCRIPT FOR NEW WINDOW VIDEO PLAYER ---
+        const videoTrigger = document.getElementById('video-trigger');
+        videoTrigger.addEventListener('click', function(event) {
+            event.preventDefault();
+            const videoPageContent = `
+                <!DOCTYPE html>
+                <html lang="ko">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>비디오 재생</title>
+                    <style>
+                        body { 
+                            margin: 0; 
+                            background-color: #000; 
+                            display: flex; 
+                            justify-content: center; 
+                            align-items: center; 
+                            height: 100vh;
+                            overflow: hidden;
+                        }
+                        video { 
+                            max-width: 100%; 
+                            max-height: 100vh;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <video src="5.mp4" controls autoplay loop>
+                        비디오를 지원하지 않는 브라우저입니다.
+                    </video>
+                </body>
+                </html>
+            `;
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(videoPageContent);
+            newWindow.document.close();
+        });
+        // --- END: JAVASCRIPT FOR NEW WINDOW VIDEO PLAYER ---
     </script>
 </body>
 </html>
