@@ -239,22 +239,34 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 40px; /* 컬럼 사이의 간격 */
+            gap: 40px; 
             width: 100%;
         }
         .column {
-            flex: 1; /* 컬럼이 공간을 균등하게 차지하도록 함 */
+            flex: 1; 
         }
         .column h3 {
-            text-align: center; /* 컬럼 안의 h3는 다시 가운데 정렬 */
-            border-left: none; /* 기존 왼쪽 보더 제거 */
-            border-bottom: 2px solid #c23b22; /* h2와 유사한 밑줄 스타일 적용 */
+            text-align: center; 
+            border-left: none; 
+            border-bottom: 2px solid #c23b22; 
             display: inline-block;
             padding-bottom: 10px;
             padding-left: 0;
             margin-top: 0;
         }
         /* --- END: 2-COLUMN LAYOUT CSS --- */
+        
+        /* --- START: LINK STYLING IN TABLE --- */
+        td a {
+            color: #f0f0f0;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        td a:hover {
+            color: #e04b2f;
+        }
+        /* --- END: LINK STYLING --- */
 
     </style>
 </head>
@@ -409,8 +421,18 @@
                 <table>
                     <thead><tr><th>요소</th><th>기존 (Day 1–4)</th><th>Day 5 이후 변경</th><th>기술적 효과</th></tr></thead>
                     <tbody>
-                        <tr><td>Main table 카메라</td><td>Panasonic PTZ(무인)</td><td>SONY HD-CP1(유인)</td><td>역동성, 샷 다양성</td></tr>
-                        <tr><td>천장 Full Shot</td><td>Panasonic PTZ</td><td>소니 HD-CP1</td><td>영상 통일성 향상</td></tr>
+                        <tr>
+                            <td>Main table 카메라</td>
+                            <td>Panasonic PTZ(무인)</td>
+                            <td><a href="https://pro.sony/s3/cms-static-content/uploadfile/36/1237491840436.pdf" target="_blank">SONY HD-CP1(유인)</a></td>
+                            <td>역동성, 샷 다양성</td>
+                        </tr>
+                        <tr>
+                            <td>천장 Full Shot</td>
+                            <td>Panasonic PTZ</td>
+                            <td>소니 HD-CP1</td>
+                            <td>영상 통일성 향상</td>
+                        </tr>
                         <tr><td>Jimmy Jib</td><td>약 8M 고정형</td><td>RoboJIB (고정형 지미집에 길이가 유동적)</td><td>역동성, 샷 다양성</td></tr>
                         <tr><td>ENG / Steady CAM</td><td>ENG(Free CAM)</td><td>ENG(Free CAM), Steady CAM</td><td>현장감 강화</td></tr>
                     </tbody>
