@@ -180,6 +180,12 @@
         #back-to-top:hover { background-color: var(--primary-hover-color); transform: scale(1.1); }
         #back-to-top.hidden, .modal-overlay.hidden { opacity: 0; pointer-events: none; }
 
+        /* --- START: MODIFIED SECTION WIDTH --- */
+        #broadcast-sequence .container {
+            max-width: 60%; /* 요청하신 대로 너비를 60%로 설정 */
+        }
+        /* --- END: MODIFIED SECTION WIDTH --- */
+
         /* --- Responsive Media Queries --- */
         @media (max-width: 768px) {
             header { padding: 0 20px; flex-direction: column; height: auto; padding-bottom: 10px; }
@@ -192,6 +198,7 @@
             .two-column-layout { flex-direction: column; }
             #modal-body { flex-direction: column; }
             #modal-body img, #modal-body video { max-width: 80vw; }
+            #broadcast-sequence .container { max-width: 95%; } /* 모바일에서는 다시 넓게 */
         }
     </style>
 </head>
@@ -393,7 +400,7 @@
                 </table>
             </div>
         </section>
-
+        
         <section id="broadcast-sequence">
             <div class="container">
                 <h2 class="center-text">방송 제작 시퀀스 분석</h2>
@@ -433,6 +440,7 @@
                 </ul>
             </div>
         </section>
+        
         <section id="conclusion">
             <div class="container">
                 <h2 class="center-text">최종 결론</h2>
