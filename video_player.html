@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 WSOP Main Event - Day 5 to Final Highlights</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #a8a8a8;
+            margin-bottom: 30px;
+        }
+
+        .day-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .day-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #2a2a3e 0%, #3a3a5e 100%);
+            border: 2px solid #ffd700;
+            border-radius: 25px;
+            color: #ffd700;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .day-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #3a3a5e 0%, #4a4a6e 100%);
+        }
+
+        .day-btn.active {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a2e;
+        }
+
+        .timeline-container {
+            background: rgba(42, 42, 62, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .timeline {
+            position: relative;
+            height: 80px;
+            background: linear-gradient(90deg, #2a2a3e 0%, #4a4a6e 100%);
+            border-radius: 40px;
+            /* overflow: hidden;  <-- 이 부분이 툴팁을 가리고 있었으므로 제거합니다. */
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-progress {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 40px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .timeline-markers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffffff;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .marker:hover {
+            transform: scale(1.5);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        /* --- 툴팁 스타일 수정 시작 --- */
+        .marker-tooltip {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px; /* 툴팁 너비 */
+            background: #1a1a2e;
+            border-radius: 8px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            border: 1px solid #ffd700;
+            z-index: 20; /* 다른 요소들 위에 보이도록 z-index 추가 */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            overflow: hidden; /* 툴팁 내부 이미지를 위해 추가 */
+        }
+
+        .tooltip-thumbnail {
+            width: 100%;
+            height: 101px; /* 16:9 비율 */
+            object-fit: cover;
+            display: block;
+            background-color: #0f0f1e; /* 이미지 로딩 전 배경색 */
+        }
+
+        .tooltip-text {
+            padding: 8px;
+            font-size: 0.85em;
+            text-align: center;
+            white-space: normal; /* 글자 자동 줄바꿈 */
+            line-height: 1.3;
+            color: #ddd;
+        }
+
+        .marker:hover .marker-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px); /* 위로 떠오르는 효과 */
+        }
+        /* --- 툴팁 스타일 수정 끝 --- */
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            background: rgba(42, 42, 62, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2a2a3e 0%, #3a3a5e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 215, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-overlay::after {
+            content: '▶';
+            color: #1a1a2e;
+            font-size: 24px;
+            margin-left: 5px;
+        }
+
+        .video-card:hover .play-overlay {
+            transform: scale(1.2);
+            background: rgba(255, 215, 0, 1);
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+
+        .video-time {
+            color: #a8a8a8;
+            font-size: 0.9em;
+        }
+
+        .video-player-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .video-player-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #ffffff;
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #ffd700;
+        }
+
+        #modalVideo {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(42, 42, 62, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #a8a8a8;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .day-btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>2025 WSOP MAIN EVENT</h1>
+            <p class="subtitle">Championship Highlights Collection</p>
+        </header>
+
+        <div style="background: rgba(42, 42, 62, 0.7); border-radius: 15px; padding: 20px; margin-bottom: 30px; border: 1px solid rgba(255, 215, 0, 0.3);">
+            <h3 style="color: #ffd700; margin-bottom: 15px;">🚀 All Set!</h3>
+            <p style="color: #a8a8a8; font-size: 0.9em; line-height: 1.6;">
+                모든 설정이 완료되었습니다. 이제 정상적으로 작동할 것입니다!
+            </p>
+        </div>
+
+        <div class="day-selector">
+            <button class="day-btn active" onclick="selectDay('day5', event)">Day 5</button>
+            <button class="day-btn" onclick="selectDay('day6', event)">Day 6</button>
+            <button class="day-btn" onclick="selectDay('day7', event)">Day 7</button>
+            <button class="day-btn" onclick="selectDay('day8', event)">Day 8</button>
+            <button class="day-btn" onclick="selectDay('final', event)">FINAL TABLE</button>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" id="totalClips">0</div>
+                <div class="stat-label">Total Clips</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="currentDay">Day 5</div>
+                <div class="stat-label">Current Day</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalDuration">0h 0m</div>
+                <div class="stat-label">Total Duration</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="prizePool">$12.1M</div>
+                <div class="stat-label">1st Prize</div>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-progress" style="width: 20%;"></div>
+                <div class="timeline-markers" id="timelineMarkers">
+                </div>
+            </div>
+        </div>
+
+        <div class="video-grid" id="videoGrid">
+        </div>
+    </div>
+
+    <div class="video-player-modal" id="videoModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeVideoModal()">&times;</span>
+            <video id="modalVideo" controls controlsList="nodownload">
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // --- ⚙️ Cloudinary 설정 ---
+        const CLOUDINARY_CLOUD_NAME = 'dol5ybwmj';
+        const CLOUDINARY_BASE_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/video/upload/`;
+        
+        // --- 🎬 비디오 데이터 (모든 Public ID와 Version 적용 완료) ---
+        // (이전과 동일한 videoData... 생략 후 아래 window.onload에서 정의)
+        
+        // --- 페이지 로직 ---
+        let currentDay = 'day5';
+        let videoData = {}; // 전역 변수로 선언
+
+        function getFullVideoUrl(publicId, version, format = 'mp4') {
+            if (!version || version === "v...") return ""; 
+            return `${CLOUDINARY_BASE_URL}${version}/${publicId}.${format}`;
+        }
+        
+        function getThumbnailUrl(publicId, version, format = 'jpg') {
+            if (!version || version === "v...") return "";
+            // 썸네일 품질과 크기 최적화 옵션 추가
+            return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/video/upload/c_fill,h_180,w_320,q_auto:good/so_1/${version}/${publicId}.${format}`;
+        }
+
+        function selectDay(day, event) {
+            currentDay = day;
+            
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            updatePageForDay(day);
+        }
+
+        function updatePageForDay(day) {
+            const dayVideos = videoData[day] || [];
+            updateStats(day, dayVideos);
+            updateVideoGrid(day, dayVideos);
+            updateTimelineMarkers(day, dayVideos);
+        }
+
+        function updateStats(day, videos) {
+            const dayDisplay = day === 'final' ? 'FINAL TABLE' : `Day ${day.slice(3)}`;
+            document.getElementById('currentDay').textContent = dayDisplay;
+            document.getElementById('totalClips').textContent = videos.length;
+            document.getElementById('totalDuration').textContent = 'Loading...';
+
+            const progress = document.querySelector('.timeline-progress');
+            const dayProgress = { 'day5': '20%', 'day6': '40%', 'day7': '60%', 'day8': '80%', 'final': '100%' };
+            progress.style.width = dayProgress[day] || '0%';
+        }
+
+        function updateVideoGrid(day, videos) {
+            const grid = document.getElementById('videoGrid');
+            grid.innerHTML = '';
+            
+            if (videos.length === 0) {
+                grid.innerHTML = `<p style="text-align: center; color: #a8a8a8; grid-column: 1 / -1;">No video clips available for this day.</p>`;
+                document.getElementById('totalDuration').textContent = '0h 0m';
+                return;
+            }
+
+            let totalSeconds = 0;
+            const promises = [];
+
+            videos.forEach((video) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.onclick = () => playVideo(getFullVideoUrl(video.videoUrl, video.version));
+                
+                const durationId = `duration-${day}-${video.id}`;
+                const thumbnailUrl = getThumbnailUrl(video.videoUrl, video.version);
+
+                card.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img src="${thumbnailUrl}" alt="${video.title} thumbnail" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+                        <div class="play-overlay"></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${video.title}</div>
+                        <div class="video-time" id="${durationId}">Duration: Loading...</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+                
+                const promise = getVideoDuration(getFullVideoUrl(video.videoUrl, video.version), durationId);
+                promises.push(promise);
+            });
+            
+            Promise.all(promises).then(durations => {
+                totalSeconds = durations.reduce((acc, curr) => acc + curr, 0);
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                document.getElementById('totalDuration').textContent = `${hours}h ${minutes}m`;
+            });
+        }
+        
+        function getVideoDuration(videoUrl, durationId) {
+            return new Promise((resolve) => {
+                if (!videoUrl) {
+                    const durationEl = document.getElementById(durationId);
+                    if(durationEl) durationEl.textContent = 'Duration: Invalid';
+                    resolve(0);
+                    return;
+                }
+
+                const video = document.createElement('video');
+                video.preload = 'metadata';
+                video.src = videoUrl;
+
+                video.addEventListener('loadedmetadata', function() {
+                    const durationEl = document.getElementById(durationId);
+                    const minutes = Math.floor(video.duration / 60);
+                    const seconds = Math.floor(video.duration % 60);
+                    if(durationEl) durationEl.textContent = `Duration: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    video.remove();
+                    resolve(video.duration);
+                });
+
+                video.addEventListener('error', function() {
+                    const durationEl = document.getElementById(durationId);
+                    if(durationEl) durationEl.textContent = 'Duration: Error';
+                    video.remove();
+                    resolve(0);
+                });
+            });
+        }
+        
+        // --- 툴팁 생성 로직 수정 ---
+        function updateTimelineMarkers(day, videos) {
+            const markersContainer = document.getElementById('timelineMarkers');
+            markersContainer.innerHTML = '';
+            
+            videos.forEach(video => {
+                const marker = document.createElement('div');
+                marker.className = 'marker';
+                marker.style.left = `calc(${video.position}% - 10px)`;
+                marker.onclick = () => playVideo(getFullVideoUrl(video.videoUrl, video.version));
+                
+                const tooltip = document.createElement('div');
+                tooltip.className = 'marker-tooltip';
+                
+                const tooltipThumbnailUrl = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/video/upload/c_fill,h_90,w_160,q_auto:good/so_1/${video.version}/${video.videoUrl}.jpg`;
+
+                tooltip.innerHTML = `
+                    <img class="tooltip-thumbnail" src="${tooltipThumbnailUrl}" alt="Thumbnail" loading="lazy">
+                    <div class="tooltip-text">${video.title}</div>
+                `;
+                
+                marker.appendChild(tooltip);
+                
+                markersContainer.appendChild(marker);
+            });
+        }
+
+        function playVideo(fullVideoUrl) {
+            if (!fullVideoUrl) {
+                alert("이 비디오의 버전 정보가 아직 입력되지 않았습니다.");
+                return;
+            }
+
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            
+            video.src = fullVideoUrl;
+            modal.classList.add('active');
+            video.play().catch(e => {
+                console.error("Video play failed:", e);
+                alert("비디오 재생에 실패했습니다. Cloudinary Public ID와 버전을 다시 확인해주세요.");
+            });
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            
+            video.pause();
+            video.src = ''; 
+            modal.classList.remove('active');
+        }
+
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('videoModal').classList.contains('active')) {
+                closeVideoModal();
+            }
+        });
+
+        window.onload = function() {
+            // videoData를 여기에 다시 포함시킵니다.
+            videoData = {
+                day5: [
+                    { id: 1, title: "WSOP 2025 Main Event - Day 5 (Part 1)", time: "Clip 1", videoUrl: "D5_1_xmidwe", version: "v1754628648", position: 5 },
+                    { id: 2, title: "WSOP 2025 Main Event - Day 5 (Part 2)", time: "Clip 2", videoUrl: "D5_2_boh3ok", version: "v1754628539", position: 11 },
+                    { id: 3, title: "WSOP 2025 Main Event - Day 5 (Part 3)", time: "Clip 3", videoUrl: "D5_3_xd7r8n", version: "v1754628536", position: 17 },
+                    { id: 4, title: "WSOP 2025 Main Event - Day 5 (Part 4)", time: "Clip 4", videoUrl: "D5_4_od0mva", version: "v1754628538", position: 23 },
+                    { id: 5, title: "WSOP 2025 Main Event - Day 5 (Part 5)", time: "Clip 5", videoUrl: "D5_5_xff5e9", version: "v1754628549", position: 29 },
+                    { id: 6, title: "WSOP 2025 Main Event - Day 5 (Part 6)", time: "Clip 6", videoUrl: "D5_6_yf7vvt", version: "v1754628667", position: 35 },
+                    { id: 7, title: "WSOP 2025 Main Event - Day 5 (Part 7)", time: "Clip 7", videoUrl: "D5_7_ijo7c8", version: "v1754628542", position: 41 },
+                    { id: 8, title: "WSOP 2025 Main Event - Day 5 (Part 8)", time: "Clip 8", videoUrl: "D5_8_nmfwox", version: "v1754628698", position: 47 },
+                    { id: 9, title: "WSOP 2025 Main Event - Day 5 (Part 9)", time: "Clip 9", videoUrl: "D5_9_tgecut", version: "v1754628559", position: 53 },
+                    { id: 10, title: "WSOP 2025 Main Event - Day 5 (Part 10)", time: "Clip 10", videoUrl: "D5_10_rkqgxp", version: "v1754628545", position: 59 },
+                    { id: 11, title: "WSOP 2025 Main Event - Day 5 (Part 11)", time: "Clip 11", videoUrl: "D5_11_okrags", version: "v1754628559", position: 65 },
+                    { id: 12, title: "WSOP 2025 Main Event - Day 5 (Part 12)", time: "Clip 12", videoUrl: "D5_12_kwab7w", version: "v1754628557", position: 71 },
+                    { id: 13, title: "WSOP 2025 Main Event - Day 5 (Part 13)", time: "Clip 13", videoUrl: "D5_13_s2abfr", version: "v1754628568", position: 77 },
+                    { id: 14, title: "WSOP 2025 Main Event - Day 5 (Part 14)", time: "Clip 14", videoUrl: "D5_14_f0hxxt", version: "v1754628560", position: 85 }
+                ],
+                day6: [
+                    { id: 15, title: "WSOP 2025 Main Event - Day 6 (Part 1)", time: "Clip 1", videoUrl: "D6_1_jbvkag", version: "v1754628692", position: 3 },
+                    { id: 16, title: "WSOP 2025 Main Event - Day 6 (Part 2)", time: "Clip 2", videoUrl: "D6_2_toh397", version: "v1754628572", position: 7 },
+                    { id: 17, title: "WSOP 2025 Main Event - Day 6 (Part 3)", time: "Clip 3", videoUrl: "D6_3_aunqmy", version: "v1754628699", position: 11 },
+                    { id: 18, title: "WSOP 2025 Main Event - Day 6 (Part 4)", time: "Clip 4", videoUrl: "D6_4_eywnzx", version: "v1754628797", position: 15 },
+                    { id: 19, title: "WSOP 2025 Main Event - Day 6 (Part 5)", time: "Clip 5", videoUrl: "D6_5_nuccm7", version: "v1754628697", position: 19 },
+                    { id: 20, title: "WSOP 2025 Main Event - Day 6 (Part 6)", time: "Clip 6", videoUrl: "D6_6_ndka7e", version: "v1754628694", position: 23 },
+                    { id: 21, title: "WSOP 2025 Main Event - Day 6 (Part 7)", time: "Clip 7", videoUrl: "D6_7_alwpyh", version: "v1754628580", position: 27 },
+                    { id: 22, title: "WSOP 2025 Main Event - Day 6 (Part 8)", time: "Clip 8", videoUrl: "D6_8_eq0akj", version: "v1754628704", position: 31 },
+                    { id: 23, title: "WSOP 2025 Main Event - Day 6 (Part 9)", time: "Clip 9", videoUrl: "D6_9_bfd4ze", version: "v1754628700", position: 35 },
+                    { id: 24, title: "WSOP 2025 Main Event - Day 6 (Part 10)", time: "Clip 10", videoUrl: "D6_10_w0ylto", version: "v1754628588", position: 39 },
+                    { id: 25, title: "WSOP 2025 Main Event - Day 6 (Part 11)", time: "Clip 11", videoUrl: "D6_11_lvqyx3", version: "v1754628590", position: 42 },
+                    { id: 26, title: "WSOP 2025 Main Event - Day 6 (Part 12)", time: "Clip 12", videoUrl: "D6_12_nimo50", version: "v1754628588", position: 45 },
+                    { id: 27, title: "WSOP 2025 Main Event - Day 6 (Part 13)", time: "Clip 13", videoUrl: "D6_13_xzpinw", version: "v1754628602", position: 48 },
+                    { id: 28, title: "WSOP 2025 Main Event - Day 6 (Part 14)", time: "Clip 14", videoUrl: "D6_14_fabmsi", version: "v1754628700", position: 51 },
+                    { id: 29, title: "WSOP 2025 Main Event - Day 6 (Part 15)", time: "Clip 15", videoUrl: "D6_15_hjhjlg", version: "v1754628613", position: 54 },
+                    { id: 30, title: "WSOP 2025 Main Event - Day 6 (Part 16)", time: "Clip 16", videoUrl: "D6_16_jhud0g", version: "v1754628603", position: 57 },
+                    { id: 31, title: "WSOP 2025 Main Event - Day 6 (Part 17)", time: "Clip 17", videoUrl: "D6_17_hybmjg", version: "v1754628709", position: 60 },
+                    { id: 32, title: "WSOP 2025 Main Event - Day 6 (Part 18)", time: "Clip 18", videoUrl: "D6_18_iyhhwd", version: "v1754628613", position: 63 },
+                    { id: 33, title: "WSOP 2025 Main Event - Day 6 (Part 19)", time: "Clip 19", videoUrl: "D6_19_x84j0q", version: "v1754628640", position: 66 },
+                    { id: 34, title: "WSOP 2025 Main Event - Day 6 (Part 20)", time: "Clip 20", videoUrl: "D6_20_und7xg", version: "v1754628776", position: 69 },
+                    { id: 35, title: "WSOP 2025 Main Event - Day 6 (Part 21)", time: "Clip 21", videoUrl: "D6_21_ca8bhb", version: "v1754628703", position: 72 },
+                    { id: 36, title: "WSOP 2025 Main Event - Day 6 (Part 22)", time: "Clip 22", videoUrl: "D6_22_ye9mwy", version: "v1754628705", position: 75 },
+                    { id: 37, title: "WSOP 2025 Main Event - Day 6 (Part 23)", time: "Clip 23", videoUrl: "D6_23_caon47", version: "v1754628712", position: 78 },
+                    { id: 38, title: "WSOP 2025 Main Event - Day 6 (Part 24)", time: "Clip 24", videoUrl: "D6_24_zexhjj", version: "v1754628708", position: 81 },
+                    { id: 39, title: "WSOP 2025 Main Event - Day 6 (Part 25)", time: "Clip 25", videoUrl: "D6_25_el5clq", version: "v1754628630", position: 84 },
+                    { id: 40, title: "WSOP 2025 Main Event - Day 6 (Part 26)", time: "Clip 26", videoUrl: "D6_26_q8dsk0", version: "v1754628752", position: 87 }
+                ],
+                day7: [
+                    { id: 41, title: "WSOP 2025 Main Event - Day 7 (Part 1)", time: "Clip 1", videoUrl: "D7_1_mh4hci", version: "v1754631245", position: 5 },
+                    { id: 42, title: "WSOP 2025 Main Event - Day 7 (Part 2)", time: "Clip 2", videoUrl: "D7_2_votira", version: "v1754628644", position: 13 },
+                    { id: 43, title: "WSOP 2025 Main Event - Day 7 (Part 3)", time: "Clip 3", videoUrl: "D7_3_gifw4t", version: "v1754628643", position: 21 },
+                    { id: 44, title: "WSOP 2025 Main Event - Day 7 (Part 4)", time: "Clip 4", videoUrl: "D7_4_olgnfe", version: "v1754628644", position: 29 },
+                    { id: 45, title: "WSOP 2025 Main Event - Day 7 (Part 5)", time: "Clip 5", videoUrl: "D7_5_nkvz3g", version: "v1754628710", position: 37 },
+                    { id: 46, title: "WSOP 2025 Main Event - Day 7 (Part 6)", time: "Clip 6", videoUrl: "D7_6", version: "v1754628763", position: 45 },
+                    { id: 47, title: "WSOP 2025 Main Event - Day 7 (Part 7)", time: "Clip 7", videoUrl: "D7_7_mik2kw", version: "v1754628775", position: 53 },
+                    { id: 48, title: "WSOP 2025 Main Event - Day 7 (Part 8)", time: "Clip 8", videoUrl: "D7_8_qixfc5", version: "v1754628780", position: 61 },
+                    { id: 49, title: "WSOP 2025 Main Event - Day 7 (Part 9)", time: "Clip 9", videoUrl: "D7_9_js46ka", version: "v1754628794", position: 69 },
+                    { id: 50, title: "WSOP 2025 Main Event - Day 7 (Part 10)", time: "Clip 10", videoUrl: "D7_10_nhlrzd", version: "v1754628662", position: 77 },
+                    { id: 51, title: "WSOP 2025 Main Event - Day 7 (Part 11)", time: "Clip 11", videoUrl: "D7_11_irn7wp", version: "v1754628667", position: 85 },
+                    { id: 52, title: "WSOP 2025 Main Event - Day 7 (Part 12)", time: "Clip 12", videoUrl: "D7_12_k0nknc", version: "v1754628722", position: 93 }
+                ],
+                day8: [
+                    { id: 53, title: "WSOP 2025 Main Event - Day 8 (Part 1)", time: "Clip 1", videoUrl: "D8_1_uuk9uc", version: "v1754628826", position: 5 },
+                    { id: 54, title: "WSOP 2025 Main Event - Day 8 (Part 2)", time: "Clip 2", videoUrl: "D8_2_mxwykn", version: "v1754631231", position: 14 },
+                    { id: 55, title: "WSOP 2025 Main Event - Day 8 (Part 3)", time: "Clip 3", videoUrl: "D8_3_nsrv5k", version: "v1754631238", position: 23 },
+                    { id: 56, title: "WSOP 2025 Main Event - Day 8 (Part 4)", time: "Clip 4", videoUrl: "D8_4_ajja1j", version: "v1754628808", position: 32 },
+                    { id: 57, title: "WSOP 2025 Main Event - Day 8 (Part 5)", time: "Clip 5", videoUrl: "D8_5_a4pnzp", version: "v1754628746", position: 41 },
+                    { id: 58, title: "WSOP 2025 Main Event - Day 8 (Part 6)", time: "Clip 6", videoUrl: "D8_6_egvia7", version: "v1754628676", position: 50 },
+                    { id: 59, title: "WSOP 2025 Main Event - Day 8 (Part 7)", time: "Clip 7", videoUrl: "D8_7_xz3obp", version: "v1754628742", position: 59 },
+                    { id: 60, title: "WSOP 2025 Main Event - Day 8 (Part 8)", time: "Clip 8", videoUrl: "D8_8_kukeqh", version: "v1754628810", position: 68 },
+                    { id: 61, title: "WSOP 2025 Main Event - Day 8 (Part 9)", time: "Clip 9", videoUrl: "D8_9_qililx", version: "v1754628815", position: 77 },
+                    { id: 62, title: "WSOP 2025 Main Event - Day 8 (Part 10)", time: "Clip 10", videoUrl: "D8_10_rn7unq", version: "v1754631236", position: 86 },
+                    { id: 63, title: "WSOP 2025 Main Event - Day 8 (Part 11)", time: "Clip 11", videoUrl: "D8_11_otuvxy", version: "v1754628685", position: 95 }
+                ],
+                final: [
+                    { id: 64, title: "WSOP 2025 Main Event - FINAL TABLE (Part 1)", time: "Clip 1", videoUrl: "F_1_ytmpau", version: "v1754631249", position: 25 },
+                    { id: 65, title: "WSOP 2025 Main Event - FINAL TABLE (Part 2)", time: "Clip 2", videoUrl: "F_2_f2ucp9", version: "v1754628820", position: 50 },
+                    { id: 66, title: "WSOP 2025 Main Event - FINAL TABLE (Part 3)", time: "Clip 3", videoUrl: "F_3_pi5atw", version: "v1754631249", position: 75 }
+                ]
+            };
+            
+            updatePageForDay('day5', { currentTarget: document.querySelector('.day-btn.active') });
+        };
+    </script>
+</body>
+</html>

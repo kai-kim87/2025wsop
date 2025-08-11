@@ -71,7 +71,7 @@
         }
 
         .logo {
-            font-size: 2.7em;
+            font-size: 1.8em; 
             font-weight: 700;
             color: #ffffff;
         }
@@ -79,6 +79,7 @@
         nav ul {
             list-style: none;
             display: flex;
+            align-items: center; 
         }
 
         nav ul li {
@@ -98,6 +99,20 @@
         nav ul li a:hover, nav ul li a.active {
             color: #ffffff;
             background-color: var(--primary-color);
+        }
+
+        .btn-highlight {
+            background-color: var(--primary-color) !important; 
+            color: #ffffff !important;
+            border-radius: 20px;
+            padding: 8px 15px !important;
+            font-weight: 700 !important;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-highlight:hover {
+            background-color: var(--primary-hover-color) !important;
+            transform: scale(1.05);
         }
 
         /* Section Styling */
@@ -147,27 +162,22 @@
         strong { color: var(--primary-hover-color); font-weight: 500; }
         .center-text { text-align: center; margin-bottom: 40px; width: 100%; }
 
-        /* Table Styling */
         table { width: 100%; margin-top: 20px; margin-bottom: 30px; border-collapse: collapse; background-color: var(--surface-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); font-size: 0.95em; }
         th, td { padding: 20px; text-align: center; border: 1px solid #444; }
         th { background-color: var(--primary-color); color: #ffffff; font-weight: 700; }
         tr:nth-child(even) { background-color: var(--surface-alt-color); }
 
-        /* Intro Section specific styles */
         .subtitle { text-align: center; font-size: 1.5em; color: #ccc; }
         .scroll-down { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9em; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-20px); } 60% { transform: translateX(-50%) translateY(-10px); } }
 
-        /* 2-COLUMN LAYOUT */
         .two-column-layout { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; width: 100%; }
         .column { flex: 1; }
         .column h3 { text-align: center; border-left: none; border-bottom: 2px solid var(--primary-color); display: inline-block; padding-bottom: 10px; padding-left: 0; margin-top: 0; }
 
-        /* LINK STYLING IN CONTENT */
         .container a { color: var(--text-primary-color); text-decoration: underline; cursor: pointer; transition: color 0.3s; }
         .container a:hover { color: var(--primary-hover-color); }
 
-        /* --- Modal Styles --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
         .modal-content { position: relative; background: var(--surface-color); padding: 20px; border-radius: 8px; max-width: 90vw; max-height: 90vh; display: flex; justify-content: center; align-items: center; }
         .modal-close { position: absolute; top: -10px; right: 5px; color: white; font-size: 3em; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
@@ -175,30 +185,36 @@
         #modal-body { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
         #modal-body img, #modal-body video { max-width: 100%; max-height: 80vh; border-radius: 5px; }
 
-        /* --- Back to Top Button Styles --- */
         #back-to-top { position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-color); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 24px; text-align: center; line-height: 50px; cursor: pointer; z-index: 1001; text-decoration: none; opacity: 1; transition: opacity 0.3s, transform 0.3s; }
         #back-to-top:hover { background-color: var(--primary-hover-color); transform: scale(1.1); }
         #back-to-top.hidden, .modal-overlay.hidden { opacity: 0; pointer-events: none; }
 
-        /* --- START: MODIFIED SECTION WIDTH --- */
         #broadcast-sequence .container {
-            max-width: 60%; /* 요청하신 대로 너비를 60%로 설정 */
+            max-width: 60%; 
         }
-        /* --- END: MODIFIED SECTION WIDTH --- */
 
-        /* --- Responsive Media Queries --- */
+        .viewership-chart {
+            max-width: 100%;
+            display: block;
+            margin: 20px auto 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+        }
+
         @media (max-width: 768px) {
             header { padding: 0 20px; flex-direction: column; height: auto; padding-bottom: 10px; }
+            .logo { font-size: 1.5em; text-align: center; width: 100%; padding-top: 10px;}
             nav ul { flex-wrap: wrap; justify-content: center; padding-top: 10px; }
             nav ul li { margin: 5px 10px; }
-            section { padding: 120px 20px 60px; }
+            section { padding: 100px 20px 60px; }
             h1 { font-size: 4.5em; }
             h2 { font-size: 2.0em; }
             h3 { font-size: 1.6em; }
             .two-column-layout { flex-direction: column; }
             #modal-body { flex-direction: column; }
             #modal-body img, #modal-body video { max-width: 80vw; }
-            #broadcast-sequence .container { max-width: 95%; } /* 모바일에서는 다시 넓게 */
+            #broadcast-sequence .container { max-width: 95%; } 
         }
     </style>
 </head>
@@ -215,7 +231,9 @@
                 <li><a href="#tech-analysis">기술분석</a></li>
                 <li><a href="#prod-analysis">제작/전략</a></li>
                 <li><a href="#broadcast-sequence">방송 시퀀스</a></li>
+                <li><a href="#viewership-analysis">시청률 분석</a></li>
                 <li><a href="#conclusion">최종결론</a></li>
+                <li><a href="video_player.html" target="_blank" class="btn-highlight">🎬 Day 영상 바로가기</a></li>
             </ul>
         </nav>
     </header>
@@ -382,6 +400,19 @@
                 </ul>
             </div>
         </section>
+
+        <section id="viewership-analysis">
+            <div class="container">
+                <h2 class="center-text">📈 시청률 분석: 전략의 성공</h2>
+                <h3>결과로 증명된 스토리텔링의 힘</h3>
+                <p>첨부된 그래프는 PokerGO 플랫폼의 연도별 라이브 스트림 시청자 수를 나타냅니다. 주목할 점은 단연 **2025년(노란색 선)의 압도적인 시청률**입니다. Day 5 이후, 스토리텔링 중심의 제작 전략으로 전환된 시점부터 시청자 수가 폭발적으로 증가하며 역대 최고치를 기록하는 것을 명확히 확인할 수 있습니다.</p>
+                
+                <img src="wsop.png" alt="WSOP Live Stream Views by Year Chart" class="viewership-chart">
+                
+                <p>이는 단순히 제작 퀄리티만 높인 것이 아니라, 'Day 영상 바로가기' 페이지에 담긴 하이라이트 영상들처럼 **플레이어의 서사와 감정선을 따라가는 콘텐츠**가 시청자들에게 큰 호응을 얻었음을 증명합니다.</p>
+                <p>결론적으로, Day 5의 전략적 변화는 시청률이라는 **객관적인 지표**를 통해 그 성공이 입증되었습니다.</p>
+            </div>
+        </section>
         
         <section id="conclusion">
             <div class="container">
@@ -424,7 +455,7 @@
                 let current = '';
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (pageYOffset >= (sectionTop - (70 + 5))) { // header height + 5px buffer
+                    if (pageYOffset >= (sectionTop - 80)) { // Adjusted for more accuracy
                         current = section.getAttribute('id');
                     }
                 });
@@ -442,10 +473,11 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Animate only once
                     }
                 });
             }, {
-                threshold: 0.1
+                threshold: 0.15 // A little more of the element needs to be visible
             });
 
             const containersToAnimate = document.querySelectorAll('section .container');
@@ -468,13 +500,11 @@
                     const type = trigger.dataset.type;
 
                     if (type === 'image') {
-                        // Handle single image (data-src)
                         if (trigger.dataset.src) {
                             const img = document.createElement('img');
                             img.src = trigger.dataset.src;
                             modalBody.appendChild(img);
                         }
-                        // Handle multiple images (data-src1, data-src2)
                         if (trigger.dataset.src1) {
                             const img1 = document.createElement('img');
                             img1.src = trigger.dataset.src1;
@@ -487,7 +517,7 @@
                         }
                     } else if (type === 'video') {
                         const video = document.createElement('video');
-                        video.src = trigger.dataset.src || '5.mp4';
+                        video.src = trigger.dataset.src;
                         video.controls = true;
                         video.autoplay = true;
                         video.loop = true;
@@ -500,12 +530,23 @@
 
             const hideModal = () => {
                 modal.classList.add('hidden');
+                const video = modalBody.querySelector('video');
+                if (video) {
+                    video.pause(); // Stop video playback when closing
+                }
                 modalBody.innerHTML = '';
             };
 
             closeModal.addEventListener('click', hideModal);
             modal.addEventListener('click', (event) => {
                 if (event.target === modal) {
+                    hideModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
                     hideModal();
                 }
             });
@@ -528,5 +569,3 @@
     </script>
 </body>
 </html>
-
-이 코드를 기반으로, Day 5의 변화 페이지에서 'Day 1–4 카메라 셋업'을 '기존'으로, 'Day 5 이후 카메라 셋업'을 '변경'으로, '변경 목적'을 '기대 효과'로 단어만 수정해줘
